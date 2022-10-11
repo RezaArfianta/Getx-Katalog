@@ -91,8 +91,8 @@ class KatalogController extends GetxController {
       });
       // listKatalog.value.addAll(katalogResponse!.data!);
       listKatalog.refresh();
-      hasMore = page * 10 <= katalogResponse!.total!;
-      print(katalogResponse!.total!);
+      hasMore = page * 10 <= katalogResponse!.total;
+      print(katalogResponse!.total);
       // if (katalogResponse != null) {
 
       // } else {
