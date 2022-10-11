@@ -1,3 +1,35 @@
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:getxkatalog/models/katalog_model.dart';
+
+class Services {
+  final dio = Dio();
+  Future<KatalogResponse?> getListKatalog(int page, String keyword) async {
+    try {
+      print("$page $keyword");
+      print(
+          'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetAll?PageSize=10&Page=$page&keyword=$keyword');
+      var response = await dio.get(
+          'https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/GetAll?PageSize=10&Page=$page&keyword=$keyword');
+
+      // print('data katalog ${response.data}');
+      // log(jsonEncode(response.data), name: "data katalog");
+
+      // if (response.statusCode == 200) {
+      return KatalogResponse.fromJson(response.data);
+      // } else {
+      //   return null;
+      // }
+    } catch (e) {
+      print("eror pada service ${e.toString()}");
+      return null;
+    }
+  }
+}
+ 
 // import 'package:dio/dio.dart';
 
 // import "models/buku.dart";

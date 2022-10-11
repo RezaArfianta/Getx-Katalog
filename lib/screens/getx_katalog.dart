@@ -1,18 +1,30 @@
-import 'package:kataloggetx/controllers/katalog_controller.dart';
-import 'package:kataloggetx/widgets/card_katalog.dart';
+import 'package:getxkatalog/controllers/katalog_controller.dart';
+import 'package:getxkatalog/widgets/card_katalog.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kataloggetx/models/katalog_model.dart';
+import 'package:getxkatalog/models/katalog_model.dart';
 
+// class GetxBeranda extends StatelessWidget {
+//   const GetxBeranda({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     KatalogController c = Get.put(KatalogController());
+
+//     return Container();
+//   }
+// }
 class GetxBeranda extends StatelessWidget {
   const GetxBeranda({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     KatalogController c = Get.put(KatalogController());
-    c.getKatalog();
+
+    // c.getKatalog;
+    // c.getPage;
 
     return Scaffold(
         appBar: AppBar(
@@ -22,6 +34,7 @@ class GetxBeranda extends StatelessWidget {
               icon: Icon(Icons.refresh),
               onPressed: () {
                 // BerandaController.getListBukuTerbaru();
+                c.fetchkatalog(c.page, '');
               },
             )
           ],
@@ -57,8 +70,9 @@ class GetxBeranda extends StatelessWidget {
                             onSubmitted: (text) {
                               c.listKatalog.clear();
                               c.page = 1;
-                              c.getKatalog();
                               c.keyword = text;
+                              c.fetchkatalog(c.page, c.keyword);
+
                               print('search oke');
                             },
                           ),
@@ -68,7 +82,8 @@ class GetxBeranda extends StatelessWidget {
                           child: ScrollConfiguration(
                             behavior: ScrollConfiguration.of(context)
                                 .copyWith(scrollbars: false),
-                            child: ListView.builder(
+                            child: Obx(() => ListView.builder(
+                                controller: c.scrollController.value,
                                 shrinkWrap: true,
                                 padding: EdgeInsets.only(left: 10, right: 10),
                                 itemBuilder: (context, int index) {
@@ -76,7 +91,7 @@ class GetxBeranda extends StatelessWidget {
                                     iniKatalog: c.listKatalog.value[index],
                                   );
                                 },
-                                itemCount: c.listKatalog.value.length + 1),
+                                itemCount: c.listKatalog.value.length)),
                           ),
                         ))
                       ],
@@ -84,7 +99,6 @@ class GetxBeranda extends StatelessWidget {
               );
             }
 
-            print("apa kek");
             return Container(
               child: Center(
                 child: Text('Data gakebaca'),

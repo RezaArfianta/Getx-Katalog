@@ -1,5 +1,5 @@
-import 'package:kataloggetx/controllers/katalog_controller.dart';
-import 'package:kataloggetx/models/katalog_model.dart';
+import 'package:getxkatalog/controllers/katalog_controller.dart';
+import 'package:getxkatalog/models/katalog_model.dart';
 import 'package:flutter/material.dart';
 
 class PopupKatalog extends StatelessWidget {

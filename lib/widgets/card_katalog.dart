@@ -1,7 +1,7 @@
-import 'package:kataloggetx/models/katalog_model.dart';
-import 'package:kataloggetx/widgets/popupkatalog.dart';
+import 'package:getxkatalog/models/katalog_model.dart';
+import 'package:getxkatalog/widgets/popupkatalog.dart';
 import 'package:flutter/material.dart';
-import 'package:kataloggetx/models/katalog_model.dart';
+import 'package:getxkatalog/models/katalog_model.dart';
 
 class KatalogCard extends StatelessWidget {
   KatalogCard({
@@ -44,7 +44,7 @@ class KatalogCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          '${iniKatalog?.judulbuku}',
+                          '${iniKatalog?.judulBuku}',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 15),
                           textAlign: TextAlign.start,
