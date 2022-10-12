@@ -82,7 +82,9 @@ class KatalogCard extends StatelessWidget {
                         onPressed: () {
                           showDialog(
                               context: context,
-                              builder: (context) => PopupKatalog());
+                              builder: (context) => PopupKatalog(
+                                    katalog: iniKatalog,
+                                  ));
                         },
                         icon: Icon(
                           Icons.info,

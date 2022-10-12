@@ -28,6 +28,23 @@ class Services {
       return null;
     }
   }
+
+  Future<DetailKatalogResponse?> getDetailKatalog(int id) async {
+    try {
+      Response response = await Dio()
+          .get('https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/$id');
+      print('popup katalog');
+      print(jsonEncode(response.data));
+      if (response.statusCode == 200) {
+        return DetailKatalogResponse.fromJson(response.data);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
 }
  
 // import 'package:dio/dio.dart';
