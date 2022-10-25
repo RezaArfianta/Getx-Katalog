@@ -31,6 +31,7 @@ class Services {
 
   Future<DetailKatalogResponse?> getDetailKatalog(int id) async {
     try {
+      print("$id");
       Response response = await Dio()
           .get('https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/$id');
       print('popup katalog');

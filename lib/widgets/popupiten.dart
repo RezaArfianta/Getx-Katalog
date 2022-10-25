@@ -1,28 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:getxkatalog/controllers/popupC.dart';
 import 'package:getxkatalog/models/katalog_model.dart';
+import 'package:get/get.dart';
 
 class PopUpIten extends StatelessWidget {
-  final IsiKatalog data;
+  Katalog? katalog;
 
-  const PopUpIten({super.key, required this.data});
+  PopUpIten({super.key, required this.katalog});
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ScrollConfiguration(
-        behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
-        child: ListView(
-          children: [
-            ListTile(
-              title: Text(data.judulBuku!),
-            ),
-            Image(
-              image: NetworkImage(
-                'https://perpustakaan.kemenkeu.go.id/img/FileCover/${data.fileCover}',
-              ),
-            )
-          ],
-        ),
+      child: ListTile(
+        title: Text(katalog!.judulBuku!),
       ),
     );
   }

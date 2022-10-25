@@ -1,14 +1,16 @@
 import 'package:getxkatalog/controllers/popupC.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getxkatalog/models/katalog_model.dart';
 import 'package:getxkatalog/widgets/popupiten.dart';
 
 class KatalogPopup extends StatelessWidget {
-  const KatalogPopup({super.key});
+  KatalogPopup({super.key, this.katalog});
+  Katalog? katalog;
 
   @override
   Widget build(BuildContext context) {
-    PopupController popupC = Get.put(PopupController());
+    PopupController popupC = Get.put(PopupController(katalog));
 
     return Dialog(
         child: Container(
@@ -37,8 +39,10 @@ class KatalogPopup extends StatelessWidget {
                     ),
                   ),
                   Obx(() {
-                    if (popupC.detail.value!.data != null) {
-                      return PopUpIten(data: popupC.detail.value!.data!);
+                    if (popupC.detail.value != null) {
+                      return PopUpIten(
+                        katalog: katalog,
+                      );
                     } else {
                       return Text("databelumada");
                     }

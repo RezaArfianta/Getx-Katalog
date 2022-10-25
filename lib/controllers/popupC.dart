@@ -12,6 +12,7 @@ class PopupController extends GetxController {
   var detail = Rxn<DetailKatalogResponse>();
   var isLoading = false.obs;
 
+  PopupController(this.katalog);
   @override
   void onInit() async {
     // TODO: implement onInit
@@ -20,9 +21,11 @@ class PopupController extends GetxController {
   }
 
   Future<void> fetchPopup() async {
-    log("hai");
+    log("hadi");
+    print("hadi");
     try {
       isLoading(true);
+      // katalog =
       detail.value = await Services().getDetailKatalog(katalog!.id);
       print(jsonEncode(detail.value));
     } catch (e) {
