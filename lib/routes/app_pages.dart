@@ -10,7 +10,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => GetxBeranda(),
+      page: () => GetxKatalog(),
     ),
   ];
 }

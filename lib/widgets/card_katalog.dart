@@ -2,6 +2,7 @@ import 'package:getxkatalog/models/katalog_model.dart';
 import 'package:getxkatalog/widgets/popupkatalog.dart';
 import 'package:flutter/material.dart';
 import 'package:getxkatalog/models/katalog_model.dart';
+import 'package:getxkatalog/widgets/popupkatalog2.dart';
 
 class KatalogCard extends StatelessWidget {
   KatalogCard({
@@ -82,9 +83,7 @@ class KatalogCard extends StatelessWidget {
                         onPressed: () {
                           showDialog(
                               context: context,
-                              builder: (context) => PopupKatalog(
-                                    katalog: iniKatalog,
-                                  ));
+                              builder: (context) => KatalogPopup());
                         },
                         icon: Icon(
                           Icons.info,

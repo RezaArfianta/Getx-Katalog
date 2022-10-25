@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getxkatalog/models/katalog_model.dart';
 
-// class GetxBeranda extends StatelessWidget {
-//   const GetxBeranda({super.key});
+// class GetxKatalog extends StatelessWidget {
+//   const GetxKatalog({super.key});
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -16,8 +16,8 @@ import 'package:getxkatalog/models/katalog_model.dart';
 //     return Container();
 //   }
 // }
-class GetxBeranda extends StatelessWidget {
-  const GetxBeranda({Key? key}) : super(key: key);
+class GetxKatalog extends StatelessWidget {
+  const GetxKatalog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,8 @@ class GetxBeranda extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Obx(() => Text("Getx beranda ${c.listKatalog.value.length}")),
+          title: Obx(
+              () => Text("Getx Peprustakaan ${c.listKatalog.value.length}")),
           actions: [
             IconButton(
               icon: Icon(Icons.refresh),

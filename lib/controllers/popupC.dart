@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
@@ -8,21 +9,22 @@ import '../services.dart';
 
 class PopupController extends GetxController {
   Katalog? katalog;
-  DetailKatalogResponse? detail;
+  var detail = Rxn<DetailKatalogResponse>();
   var isLoading = false.obs;
 
   @override
-  void onInit() {
+  void onInit() async {
     // TODO: implement onInit
     super.onInit();
-    fetchPopup();
+    await fetchPopup();
   }
 
   Future<void> fetchPopup() async {
     log("hai");
     try {
       isLoading(true);
-      detail = await Services().getDetailKatalog(katalog!.id);
+      detail.value = await Services().getDetailKatalog(katalog!.id);
+      print(jsonEncode(detail.value));
     } catch (e) {
       print(e);
     }

@@ -16,7 +16,13 @@ class _PopupKatalogState extends State<PopupKatalog> {
   Widget build(BuildContext context) {
     PopupController popupC = Get.put(PopupController());
     return Dialog(
-      child: Container(
+      child:
+          //child: isLoading
+          //     ? Container(
+          //         height: 450,
+          //         width: 200,
+          //         child: Center(child: CircularProgressIndicator()))
+          Container(
         margin: EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
         decoration: BoxDecoration(color: Colors.white),
         height: 450,
@@ -42,10 +48,16 @@ class _PopupKatalogState extends State<PopupKatalog> {
                 ),
               ),
               Expanded(
-                child: Text(
-                  '${popupC.detail?.data?.judulBuku!}',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
-                ),
+                child: Obx(() {
+                  if (popupC.detail.value != null) {
+                    return Text(
+                      '${popupC.detail.value!.data!.judulBuku!}',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                    );
+                  }
+                  return Container();
+                }),
               ),
               SizedBox(
                 height: 10,
@@ -59,12 +71,17 @@ class _PopupKatalogState extends State<PopupKatalog> {
                     bottomLeft: Radius.circular(10),
                     bottomRight: Radius.circular(10),
                   ),
-                  child: Image(
-                    image: NetworkImage(
-                      'https://perpustakaan.kemenkeu.go.id/img/FileCover/${popupC.detail?.data?.fileCover}',
-                    ),
-                    fit: BoxFit.fill,
-                  ),
+                  child: Obx(() {
+                    if (popupC.detail.value != null) {
+                      return Image(
+                        image: NetworkImage(
+                          'https://perpustakaan.kemenkeu.go.id/img/FileCover/${popupC.detail.value!.data!.fileCover}',
+                        ),
+                        fit: BoxFit.fill,
+                      );
+                    }
+                    return Container();
+                  }),
                 ),
 
                 // width: 50,
@@ -73,12 +90,17 @@ class _PopupKatalogState extends State<PopupKatalog> {
               SizedBox(
                 height: 30,
               ),
-              Text(
-                  popupC.detail?.data?.abstrak != null
-                      ? '${popupC.detail?.data?.abstrak}'
-                      : '',
-                  style: TextStyle(),
-                  textAlign: TextAlign.justify),
+              Obx(() {
+                if (popupC.detail.value != null) {
+                  return Text(
+                      popupC.detail.value!.data!.abstrak != null
+                          ? '${popupC.detail.value!.data!.abstrak}'
+                          : '',
+                      style: TextStyle(),
+                      textAlign: TextAlign.justify);
+                }
+                return Container();
+              }),
               SizedBox(
                 height: 20,
               ),
@@ -96,9 +118,15 @@ class _PopupKatalogState extends State<PopupKatalog> {
                   ),
                   Text(':'),
                   Expanded(
-                    child: Text(popupC.detail?.data?.namaPengarang != null
-                        ? '${popupC.detail?.data?.namaPengarang}'
-                        : ''),
+                    child: Obx(() {
+                      if (popupC.detail.value != null) {
+                        return Text(
+                            popupC.detail.value!.data!.namaPengarang != null
+                                ? '${popupC.detail.value!.data!.namaPengarang}'
+                                : '');
+                      }
+                      return Container();
+                    }),
                     flex: 4,
                   )
                 ],
@@ -120,7 +148,13 @@ class _PopupKatalogState extends State<PopupKatalog> {
                   ),
                   Text(':'),
                   Expanded(
-                    child: Text('${popupC.detail?.data?.namaPenerbit}'),
+                    child: Obx(() {
+                      if (popupC.detail.value != null) {
+                        return Text(
+                            '${popupC.detail.value!.data!.namaPenerbit}');
+                      }
+                      return Container();
+                    }),
                     flex: 4,
                   )
                 ],
@@ -142,7 +176,12 @@ class _PopupKatalogState extends State<PopupKatalog> {
                   ),
                   Text(':'),
                   Expanded(
-                    child: Text('${popupC.detail?.data?.isbn}'),
+                    child: Obx(() {
+                      if (popupC.detail.value != null) {
+                        return Text('${popupC.detail.value!.data!.isbn}');
+                      }
+                      return Container();
+                    }),
                     flex: 4,
                   )
                 ],
@@ -164,9 +203,12 @@ class _PopupKatalogState extends State<PopupKatalog> {
                   ),
                   Text(':'),
                   Expanded(
-                    child: Text(popupC.detail?.data?.lokasiRak != null
-                        ? '${popupC.detail?.data?.lokasiRak}'
-                        : ''),
+                    child: Obx(() {
+                      if (popupC.detail.value != null) {
+                        return Text('${popupC.detail.value!.data!.lokasiRak}');
+                      }
+                      return Container();
+                    }),
                     flex: 4,
                   )
                 ],
@@ -188,7 +230,12 @@ class _PopupKatalogState extends State<PopupKatalog> {
                   ),
                   Text(':'),
                   Expanded(
-                    child: Text('${popupC.detail?.data?.lokasi}'),
+                    child: Obx(() {
+                      if (popupC.detail.value != null) {
+                        return Text('${popupC.detail.value!.data!.lokasi}');
+                      }
+                      return Container();
+                    }),
                     flex: 4,
                   )
                 ],
@@ -210,9 +257,14 @@ class _PopupKatalogState extends State<PopupKatalog> {
                   ),
                   Text(':'),
                   Expanded(
-                    child: Text(popupC.detail?.data?.subyek != null
-                        ? '${popupC.detail?.data?.subyek}'
-                        : ''),
+                    child: Obx(() {
+                      if (popupC.detail.value != null) {
+                        return Text(popupC.detail.value!.data!.subyek != null
+                            ? '${popupC.detail.value!.data!.subyek}'
+                            : '');
+                      }
+                      return Container();
+                    }),
                     flex: 4,
                   )
                 ],

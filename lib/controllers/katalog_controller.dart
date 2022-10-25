@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'package:getxkatalog/services.dart';
 // import 'package:http/http.dart' as http;

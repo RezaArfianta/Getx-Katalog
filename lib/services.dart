@@ -45,6 +45,16 @@ class Services {
       return null;
     }
   }
+//   static Future<DetailKatalogResponse?> getDetailKatalog(int id) async {
+//     try {
+//       var response = await Dio()
+//           .get('https://demo-service.kemenkeu.go.id/perpustakaan/Koleksi/$id');
+//       return DetailKatalogResponse.fromJson(response.data);
+//     } catch (e) {
+//       print("eror pada popup ${e.toString()}");
+//       return null;
+//     }
+//   }
 }
  
 // import 'package:dio/dio.dart';
