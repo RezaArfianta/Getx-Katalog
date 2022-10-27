@@ -11,7 +11,9 @@ class KatalogPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PopupController popupC = Get.put(PopupController(katalog));
+    PopupController popupC =
+        Get.put(PopupController(katalog), tag: "${katalog!.id}");
+    // PopupController popupC = Get.put(PopupController(katalog));
 
     return Dialog(child: Obx(() {
       if (popupC.detail.value != null) {
